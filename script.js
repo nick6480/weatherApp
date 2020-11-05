@@ -52,8 +52,6 @@ function getCity(city){
 }
 
 
-
-
 var EnterKey = document.getElementById("input");
 var click = document.getElementById("btn");
 
