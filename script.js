@@ -2,7 +2,7 @@ var hideTemperature = document.getElementById("temperature-value");
 hideTemperature.style.display = "none";
 var hideLocation = document.getElementById("notifikationer");
 hideLocation.style.display = "none";
-var  hideWeatherIcon = document.getElementById("weather-icon")
+var hideWeatherIcon = document.getElementById("weather-icon")
 hideWeatherIcon.style.display = "none";
 
 
@@ -33,19 +33,20 @@ function getCity(city){
 			  document.getElementById("temperature-value").style.fontSize = "35px";
 			  document.getElementById("temperature-value").style.fontWeight = "800";
 			  document.getElementById("temperature-value").style.display = "block";
-			  element.innerHTML = Math.round(convertKelvinToCelsius(jsonObj.main.temp).toFixed(2)) + " \u00B0C";
+			  element.innerHTML = Math.round(convertKelvinToCelsius(jsonObj.main.temp)) + " \u00B0C";
 
-			  //sys-country siger hvilket land byen er i så fx DK, SE, GB, NO osv
+
 			  var element = document.getElementById("notifikationer");
 			  document.getElementById("notifikationer").style.fontSize = "45px";
 			  document.getElementById("notifikationer").style.display = "block";
+															// Henter bynavnet
               element.innerHTML = jsonObj.name;
 
             }
         }
 	}
 
-
+		// URL'en til openweathermap hvor vejr informationerne bliver hentet
     x = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=547d9d614973c7dc888cd7cc61b23c04'
     ajaxRequest.open('GET', x);
     ajaxRequest.send();
@@ -74,7 +75,7 @@ EnterKey.addEventListener("keypress", function() {
   sendURL(event.key);
 })
 
-
+//Hvis enter bliver trykket henter den bynavnet
 function sendURL (enter) {
 	if(event.key=="Enter"){
     getCity(EnterKey.value);
